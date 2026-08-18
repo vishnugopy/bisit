@@ -1,6 +1,6 @@
 {
   "name": "bisit-skill",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An opinionated frontend design and accessibility skill for AI coding agents.",
   "keywords": [
     "agent-skill",
@@ -22,6 +22,7 @@
   "license": "MIT",
   "author": "vishnugopy",
   "files": [
+    "README.md",
     "SKILL.md",
     "agents/openai.yaml"
   ],
