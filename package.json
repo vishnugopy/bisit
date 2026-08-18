@@ -1,6 +1,6 @@
 {
   "name": "bisit-skill",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "An opinionated frontend design and accessibility skill for AI coding agents.",
   "keywords": [
     "agent-skill",
@@ -11,7 +11,7 @@
     "responsive-design",
     "dark-mode"
   ],
-  "homepage": "https://skills.sh/vishnugopy/bisit",
+  "homepage": "https://www.skills.sh/vishnugopy/bisit/bisit",
   "bugs": {
     "url": "https://github.com/vishnugopy/bisit/issues"
   },

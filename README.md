@@ -51,7 +51,7 @@ Bisit preserves user-facing content and intentional brand choices by default. It
 
 - [npm package](https://www.npmjs.com/package/bisit-skill)
 - [GitHub repository](https://github.com/vishnugopy/bisit)
-- [skills.sh listing](https://skills.sh/vishnugopy/bisit)
+- [skills.sh listing](https://www.skills.sh/vishnugopy/bisit/bisit)
 
 ## License
 
