@@ -1,6 +1,6 @@
 ---
 name: bisit
-description: Frontend design and accessibility review that removes gratuitous borders, shadows, accent rails, card nesting, and other templated AI-generated styling while correcting alignment, spacing, hierarchy, color contrast, light and dark themes, keyboard behavior, semantics, and responsive reflow. Use only when explicitly invoked with $bisit to audit, refine, or build accessible web interfaces in HTML/CSS, React, Next.js, Vue, Svelte, or similar frontend projects.
+description: Frontend design and accessibility review that removes gratuitous borders, shadows, accent rails, card nesting, and other templated AI-generated styling while preserving existing user-facing content and correcting alignment, spacing, hierarchy, color contrast, light and dark themes, keyboard behavior, semantics, and responsive reflow. Use only when explicitly invoked with $bisit to audit, refine, or build accessible web interfaces in HTML/CSS, React, Next.js, Vue, Svelte, or similar frontend projects.
 ---
 
 # Bisit
@@ -10,14 +10,26 @@ Create deliberate, production-ready interfaces that feel designed for their cont
 ## Run the workflow
 
 1. Inspect the frontend structure, existing design system, shared components, tokens, and the requested screen before editing.
-2. Preserve product behavior, brand choices, and established component APIs unless they cause the design problem.
-3. Audit the interface against the rules below. Prioritize structural problems over cosmetic polishing.
-4. For an implementation request, make focused code changes and reuse existing primitives. For a review-only request, report findings without editing.
-5. Use WCAG 2.2 Level AA as the accessibility baseline unless the project specifies a newer or stricter standard.
-6. Verify relevant tests, linting, responsive behavior, themes, and interaction states when the project supports them. Combine automated checks with manual inspection; never claim accessibility from an automated score alone.
-7. Never claim visual verification without inspecting a rendered result or screenshot.
+2. Record the existing visible headings, body copy, labels, links, values, and data before editing. Treat this content as locked unless the user explicitly requests content changes.
+3. Preserve product behavior, information architecture, brand choices, and established component APIs unless they cause the design or accessibility problem.
+4. Audit the interface against the rules below. Prioritize structural problems over cosmetic polishing.
+5. For an implementation request, make focused code changes and reuse existing primitives. For a review-only request, report findings without editing.
+6. Use WCAG 2.2 Level AA as the accessibility baseline unless the project specifies a newer or stricter standard.
+7. Verify relevant tests, linting, responsive behavior, themes, interaction states, and the visible-content inventory when the project supports them. Combine automated checks with manual inspection; never claim accessibility from an automated score alone.
+8. Never claim visual verification without inspecting a rendered result or screenshot.
 
 When invoked without a target, inspect the current frontend and improve the primary visible surface or shared layout. Avoid an unbounded redesign; state the scope chosen.
+
+## Preserve content and product meaning
+
+- Treat `$bisit` as a design and accessibility refinement, not a copywriting or content-strategy request.
+- Preserve visible titles, headings, paragraphs, labels, button text, links, navigation items, metrics, values, names, dates, and data exactly by default. Do not rewrite generic or promotional copy merely because it resembles AI-generated content.
+- Preserve existing sections and information. Change their layout or remove an unnecessary visual container instead of deleting their content.
+- Do not invent replacement copy, new metrics, new claims, new features, new calls to action, or placeholder content.
+- Preserve the content order and hierarchy unless responsive reflow requires a different visual arrangement. Keep the programmatic reading order logical and equivalent.
+- Add non-visible accessible names, descriptions, live-region text, or semantic attributes when needed. Add or change visible wording only when the user requests it or when accessibility cannot be solved without it; explain any such exception before editing when possible and always report it afterward.
+- If existing text causes overflow or imbalance, fix the layout to support the text. Do not shorten, paraphrase, or replace the text to make the composition easier.
+- Compare the final visible-content inventory with the original and revert unintended content changes before finishing.
 
 ## Fix layout and alignment first
 
@@ -39,6 +51,9 @@ When invoked without a target, inspect the current frontend and improve the prim
 ## Restrain borders, shadows, and surfaces
 
 - Start with no border and no shadow. Add one only when it communicates a necessary boundary, state, or layer.
+- Keep page headers, navigation bars, ordinary sections, metric groups, and content regions borderless by default. Do not add `border-bottom`, `border-top`, an outline, or an inset shadow merely to separate a header or section from the page.
+- When removing a card, shadow, or tinted container, do not replace it with a border. Use spacing, alignment, typography, or an existing surface token first.
+- Before adding or retaining a border, ask what information would become unclear without it. Omit the border when there is no concrete answer.
 - Prefer whitespace, alignment, typography, or a subtle background shift to separate ordinary sections.
 - Do not wrap every section in a card. Remove nested cards and repeated rounded rectangles when page structure already provides grouping.
 - Use borders for inputs, tables, dividers, selection, validation, or dense content only when the boundary improves comprehension.
@@ -112,6 +127,8 @@ Confirm that:
 - Major edges and baselines align.
 - Spacing follows a small, consistent scale.
 - Visual hierarchy remains clear without decorative effects.
+- Existing visible copy, labels, links, metrics, values, and data remain unchanged unless the user explicitly requested a content edit.
+- Headers, navigation bars, and ordinary page sections have no newly introduced separator borders unless removing one would make the structure or state unclear.
 - Every remaining border and shadow has a specific purpose.
 - Equivalent components use a consistent radius scale, and nested corners appear concentric.
 - Repeated elements are consistent without making the page monotonous.
@@ -121,4 +138,4 @@ Confirm that:
 - The interface reflows at 320 CSS pixels, survives zoom and text spacing, and works across relevant breakpoints and interaction states.
 - The result still belongs to the existing product.
 
-Summarize the scope, the highest-impact changes, and the verification performed. Mention unresolved subjective tradeoffs briefly instead of presenting them as defects.
+Summarize the scope, the highest-impact changes, and the verification performed. Explicitly disclose every visible content change, or state that visible content was preserved. Mention unresolved subjective tradeoffs briefly instead of presenting them as defects.
