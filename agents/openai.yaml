@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bisit"
+  short_description: "Fix frontend design and accessibility issues"
+  default_prompt: "Use $bisit to audit and refine this frontend interface for design, accessibility, themes, and responsiveness."
+
+policy:
+  allow_implicit_invocation: false

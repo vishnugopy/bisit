@@ -1,0 +1,31 @@
+{
+  "name": "bisit",
+  "version": "0.1.0",
+  "description": "An opinionated frontend design and accessibility skill for AI coding agents.",
+  "keywords": [
+    "agent-skill",
+    "skills.sh",
+    "frontend",
+    "ui-design",
+    "accessibility",
+    "responsive-design",
+    "dark-mode"
+  ],
+  "homepage": "https://skills.sh/vishnugopy/bisit",
+  "bugs": {
+    "url": "https://github.com/vishnugopy/bisit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishnugopy/bisit.git"
+  },
+  "license": "MIT",
+  "author": "vishnugopy",
+  "files": [
+    "SKILL.md",
+    "agents/openai.yaml"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
