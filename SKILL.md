@@ -1,141 +1,67 @@
 ---
 name: bisit
-description: Frontend design and accessibility review that removes gratuitous borders, shadows, accent rails, card nesting, and other templated AI-generated styling while preserving existing user-facing content and correcting alignment, spacing, hierarchy, color contrast, light and dark themes, keyboard behavior, semantics, and responsive reflow. Use only when explicitly invoked with $bisit to audit, refine, or build accessible web interfaces in HTML/CSS, React, Next.js, Vue, Svelte, or similar frontend projects.
+description: Audit or refine frontend design and accessibility while preserving content, behavior, meaningful state cues, and brand choices. Use only when explicitly invoked for selected code, selected files, or a project-wide HTML/CSS, React, Next.js, Vue, Svelte, or similar interface review.
 ---
 
 # Bisit
 
-Create deliberate, production-ready interfaces that feel designed for their content rather than assembled from generic UI effects.
+Create deliberate, production-ready interfaces without generic over-styling. Use WCAG 2.2 Level AA as the baseline unless the project requires a stricter standard.
 
-## Run the workflow
+## Choose the scope
 
-1. Inspect the frontend structure, existing design system, shared components, tokens, and the requested screen before editing.
-2. Record the existing visible headings, body copy, labels, links, values, and data before editing. Treat this content as locked unless the user explicitly requests content changes.
-3. Preserve product behavior, information architecture, brand choices, and established component APIs unless they cause the design or accessibility problem.
-4. Audit the interface against the rules below. Prioritize structural problems over cosmetic polishing.
-5. For an implementation request, make focused code changes and reuse existing primitives. For a review-only request, report findings without editing.
-6. Use WCAG 2.2 Level AA as the accessibility baseline unless the project specifies a newer or stricter standard.
-7. Verify relevant tests, linting, responsive behavior, themes, interaction states, and the visible-content inventory when the project supports them. Combine automated checks with manual inspection; never claim accessibility from an automated score alone.
-8. Never claim visual verification without inspecting a rendered result or screenshot.
+Use the narrowest available scope in this order:
 
-When invoked without a target, inspect the current frontend and improve the primary visible surface or shared layout. Avoid an unbounded redesign; state the scope chosen.
+1. A target explicitly named by the user.
+2. Selected text or code supplied by the host editor.
+3. Selected or attached file(s).
+4. The current project's frontend when none of the above is present.
 
-## Preserve content and product meaning
+For a selection, inspect only enough surrounding code and dependencies to understand it; edit the selection's file and do not broaden the change without necessity. For selected files, limit edits to those files unless a required shared dependency must change, and disclose that expansion. For project scope, inspect frontend entry points, shared primitives, tokens, and primary screens; exclude dependencies, generated output, vendored code, and unrelated backend files.
 
-- Treat `$bisit` as a design and accessibility refinement, not a copywriting or content-strategy request.
-- Preserve visible titles, headings, paragraphs, labels, button text, links, navigation items, metrics, values, names, dates, and data exactly by default. Do not rewrite generic or promotional copy merely because it resembles AI-generated content.
-- Preserve existing sections and information. Change their layout or remove an unnecessary visual container instead of deleting their content.
-- Do not invent replacement copy, new metrics, new claims, new features, new calls to action, or placeholder content.
-- Preserve the content order and hierarchy unless responsive reflow requires a different visual arrangement. Keep the programmatic reading order logical and equivalent.
-- Add non-visible accessible names, descriptions, live-region text, or semantic attributes when needed. Add or change visible wording only when the user requests it or when accessibility cannot be solved without it; explain any such exception before editing when possible and always report it afterward.
-- If existing text causes overflow or imbalance, fix the layout to support the text. Do not shorten, paraphrase, or replace the text to make the composition easier.
-- Compare the final visible-content inventory with the original and revert unintended content changes before finishing.
+Do not scan the full project when a narrower target exists. Treat host-provided editor context as the target without asking the user to repeat it.
 
-## Fix layout and alignment first
+## Work efficiently
 
-- Align related content to shared edges, columns, gutters, and text baselines.
-- Use grid or flex layout instead of compensating with arbitrary margins, transforms, or absolute positioning.
-- Keep repeated components equal where equality communicates structure; let content determine size where it does not.
-- Correct icon and control alignment optically when geometric centering looks wrong.
-- Maintain a clear container strategy and consistent page gutters across breakpoints.
-- Remove accidental width changes, uneven columns, orphaned elements, and controls that drift from their labels or content.
+1. Inspect the target and its existing design system before editing. Record its visible headings, copy, labels, links, values, and data.
+2. Prioritize layout, hierarchy, states, and accessibility over cosmetic polish. Reuse existing primitives and tokens.
+3. If the user asks for an audit, report actionable findings without editing. If they ask to improve, fix the problems in scope.
+4. Run only checks relevant to the changed scope. Combine automation with keyboard and rendered inspection when available; never claim visual verification without viewing the result.
+5. Report the scope, highest-impact changes, verification, visible-content changes, and any unresolved tradeoff concisely.
 
-## Use disciplined spacing and hierarchy
+## Preserve meaning
 
-- Reuse the project's spacing scale. Consolidate near-duplicate values instead of introducing arbitrary gaps.
-- Make spacing reflect relationships: tight within a group, larger between groups, and largest between page sections.
-- Establish hierarchy with typography, placement, whitespace, and restrained color before adding containers or effects.
-- Keep headings, labels, body text, and actions consistent across equivalent sections.
-- Avoid oversized headings, excessive empty hero space, and tiny uppercase eyebrow labels used only to imitate a template.
+- Preserve visible copy, data, sections, information order, product behavior, information architecture, brand choices, and public component APIs unless the user requests otherwise or one directly causes the problem.
+- Fix layout to support existing content; do not shorten text, delete information, or invent copy, metrics, features, calls to action, or filler.
+- Add non-visible accessible names, descriptions, or state semantics when needed. Change visible wording only when requested or when accessibility cannot otherwise be solved, and disclose it.
 
-## Restrain borders, shadows, and surfaces
+## Design rules
 
-- Start with no border and no shadow. Add one only when it communicates a necessary boundary, state, or layer.
-- Keep page headers, navigation bars, ordinary sections, metric groups, and content regions borderless by default. Do not add `border-bottom`, `border-top`, an outline, or an inset shadow merely to separate a header or section from the page.
-- When removing a card, shadow, or tinted container, do not replace it with a border. Use spacing, alignment, typography, or an existing surface token first.
-- Before adding or retaining a border, ask what information would become unclear without it. Omit the border when there is no concrete answer.
-- Prefer whitespace, alignment, typography, or a subtle background shift to separate ordinary sections.
-- Do not wrap every section in a card. Remove nested cards and repeated rounded rectangles when page structure already provides grouping.
-- Use borders for inputs, tables, dividers, selection, validation, or dense content only when the boundary improves comprehension.
-- Use shadows primarily for genuine elevation such as menus, popovers, dialogs, and dragged or sticky elements. Keep the shadow scale subtle and consistent.
-- Avoid combining a border, shadow, tinted background, and large radius on the same surface without a concrete reason.
+- Align related content to shared edges, columns, gutters, and baselines. Prefer grid, flex, intrinsic sizing, and consistent page gutters over arbitrary margins, transforms, fixed dimensions, or breakpoint patches.
+- Use the project's spacing and typography scales. Let spacing show relationships and typography, placement, whitespace, and restrained color establish hierarchy.
+- Start ordinary sections, headers, navigation, and metric groups without borders or shadows. Use whitespace or a subtle surface change when separation is needed.
+- Keep borders that communicate a boundary or state: inputs, tables, selection, focus, validation, warnings, and dense regions may need them. Never remove a meaningful border merely to make the interface borderless.
+- If replacing a selected, active, checked, focused, or invalid border, provide an equally clear, persistent non-color cue such as shape, weight, text, or an icon. Selection must remain identifiable after focus moves away.
+- Reserve shadows for real elevation such as menus, dialogs, popovers, dragged items, or sticky layers. Avoid stacking border, shadow, tint, and a large radius without a reason.
+- Use a small, consistent radius scale. Keep equivalent controls consistent and nested corners visually concentric; reserve pills and circles for roles that justify the shape.
+- Remove decorative accent rails, gratuitous gradients, glows, glass effects, blurred blobs, dot grids, excessive pills, nested generic cards, colored icon tiles, arbitrary fixed sizing, and template filler. Preserve an effect when it conveys status, selection, hierarchy, or brand meaning.
 
-## Keep corner radii visually consistent
+## Accessibility rules
 
-- Reuse a small radius scale from the project's tokens. Consolidate accidental one-off values such as several nearly identical radii.
-- Give components with the same role, size, and visual weight the same radius. Keep equivalent buttons, inputs, cards, dialogs, and menus consistent across screens and states.
-- Match adjacent controls of equal height unless a different shape communicates a meaningful distinction.
-- Make nested corners visually concentric. Account for the gap or padding between an outer surface and its inner element instead of applying the same numeric radius blindly.
-- Reduce the radius as component size decreases. Reserve fully rounded pills for tags, compact filters, statuses, or controls whose shape has a purpose.
-- Preserve intentional exceptions such as circular avatars, icon buttons, segmented-control ends, sheets, or brand-specific shapes.
-- Judge optical consistency in the rendered interface, not only equality of CSS values.
+- Prefer native HTML. Preserve logical headings, landmarks, visible labels, instructions, alternative text, associated errors, and name/role/value for custom controls.
+- Keep every control keyboard operable in a logical order. Manage focus entry, containment, closing, and restoration for dialogs and popovers.
+- Keep a clear, high-contrast `:focus-visible` indicator in every theme. It is visual feedback for all keyboard users, including sighted users, and is not decorative.
+- Keep focus and selection distinct: focus is the keyboard's current position; selection is persistent state.
+- ARIA supplements visual communication; it never replaces a visible label, selection cue, status, error, or instruction. Use `aria-label` only when no equivalent visible name is available, such as an icon-only control. Represent state with native semantics or the correct `aria-*` state, not by changing the accessible name.
+- Measure rendered contrast: at least 4.5:1 for normal text, 3:1 for large text, and 3:1 for meaningful component boundaries, icons, and focus indicators where required. Check actual foreground/background combinations, opacity, and overlays in every supported theme.
+- Never use color alone for meaning. Check default, hover, focus, active, selected, disabled, validation, placeholder, and link states. Preserve forced-colors behavior where feasible.
+- Respect reduced motion. Avoid flashing and autoplay; provide controls when motion is necessary.
 
-## Remove AI-slop patterns
+## Responsive rules
 
-- Remove decorative thick left borders, accent rails, and `border-left` stripes unless they encode a real status, selection, timeline, quote, or warning.
-- Remove gratuitous gradients, glows, glass effects, blurred color blobs, dot grids, and decorative background noise.
-- Avoid excessive pills, oversized corner radii, and icons placed in colored rounded squares by default.
-- Replace repeated generic cards with a layout shaped by the actual content and user task.
-- Avoid arbitrary fixed widths and heights added only to make a composition look balanced at one viewport.
-- Do not add badges, metrics, callouts, side panels, or placeholder marketing copy merely to fill space.
-- Avoid identical landing-page formulas when the product calls for a simpler or more task-focused structure.
+- Verify narrow, intermediate, and wide layouts where content breaks. Check 320 CSS-pixel reflow, 400% zoom, 200% text zoom, and increased text spacing when relevant.
+- Prevent truncation, overlap, hidden controls, and two-dimensional scrolling except where the content genuinely requires it. Account for long or translated text and unbroken strings.
+- Prefer fluid and intrinsic layout, wrapping, `minmax()`, `clamp()`, and `min-width: 0`. Keep required targets at least 24 by 24 CSS pixels and provide keyboard and touch equivalents for hover behavior.
 
-## Validate colors and themes
+## Finish
 
-- Measure contrast using the rendered foreground and background colors, including opacity and overlays; do not judge contrast by eye.
-- Require at least 4.5:1 contrast for normal text, 3:1 for large text, and 3:1 for meaningful UI component boundaries, icons, charts, and focus indicators where WCAG requires it.
-- Check default, hover, focus, active, selected, disabled, error, success, warning, placeholder, and link states. Do not allow interaction to reduce readable contrast.
-- Never use color as the only signal. Pair status and validation colors with text, an icon, a pattern, or another persistent visual cue.
-- Test every semantic color token against its actual surface in both light and dark modes. Do not assume reversing a palette preserves contrast or hierarchy.
-- Check elevated surfaces, overlays, menus, dialogs, tooltips, code blocks, charts, illustrations, and third-party widgets in both themes.
-- Support the system color preference when appropriate and keep a user-selected theme stable. Give any theme control an accessible name and programmatic state.
-- Use `color-scheme` for compatible native controls when appropriate. Check browser autofill, form controls, scrollbars, selection colors, and focus indicators in each theme.
-- Check forced-colors or high-contrast mode when feasible. Avoid CSS that suppresses user-agent accessibility adjustments without an equivalent.
-
-## Preserve keyboard and screen-reader access
-
-- Prefer native semantic elements. Add ARIA only when native HTML cannot express the required behavior.
-- Keep a logical heading structure, landmarks, labels, accessible names, instructions, alternative text, and programmatically associated errors.
-- Make every interactive element keyboard operable in a logical order without traps. Manage initial focus, containment, closing, and focus restoration for dialogs and popovers.
-- Keep a clearly visible `:focus-visible` indicator with sufficient contrast in light and dark modes. Never remove an outline without providing an equally clear replacement.
-- Preserve skip navigation, live-region announcements, expanded and selected states, and name/role/value for custom controls where relevant.
-- Do not remove boundaries users need to recognize inputs, tables, selected states, errors, focus, or interactive regions.
-
-## Test responsive behavior and reflow
-
-- Test narrow mobile, intermediate, and wide layouts based on where content actually breaks, not only popular device presets.
-- Verify reflow at 320 CSS pixels and at 400% zoom without loss of content, functionality, or two-dimensional scrolling, except for content such as data tables or diagrams that genuinely requires two dimensions.
-- Verify text at 200% zoom and with increased line, paragraph, word, and letter spacing. Prevent truncation, overlap, hidden controls, and loss of functionality.
-- Prefer fluid sizing, intrinsic layout, wrapping, `minmax()`, `clamp()`, and `min-width: 0` over fixed dimensions and breakpoint patches.
-- Test long titles, translated copy, validation messages, empty results, dense data, user-generated content, and unbroken strings.
-- Keep controls at least 24 by 24 CSS pixels where the WCAG target-size requirement applies, with adequate spacing; aim larger for primary touch actions.
-- Ensure hover behavior has keyboard and touch equivalents. Do not hide essential actions behind hover alone.
-- Support both orientations unless one orientation is essential. Keep sticky elements, virtual keyboards, safe areas, and zoom from obscuring content or focus.
-
-## Check remaining accessibility risks
-
-- Check empty, loading, error, success, timeout, offline, hover, focus, active, disabled, overflow, and destructive-action states relevant to the UI.
-- Respect reduced-motion preferences. Avoid autoplay, flashing, parallax, and nonessential animation; provide controls when moving content cannot be avoided.
-- Keep readable line lengths, scalable text, clear language, descriptive link text, and consistent navigation.
-- Make responsive images and media preserve meaning. Provide alternatives, captions, transcripts, and controls when the content requires them.
-- Treat automated accessibility tools as coverage aids. Manually test keyboard flow, focus visibility, zoom/reflow, theme contrast, and core screen-reader semantics.
-
-## Finish with a design check
-
-Confirm that:
-
-- Major edges and baselines align.
-- Spacing follows a small, consistent scale.
-- Visual hierarchy remains clear without decorative effects.
-- Existing visible copy, labels, links, metrics, values, and data remain unchanged unless the user explicitly requested a content edit.
-- Headers, navigation bars, and ordinary page sections have no newly introduced separator borders unless removing one would make the structure or state unclear.
-- Every remaining border and shadow has a specific purpose.
-- Equivalent components use a consistent radius scale, and nested corners appear concentric.
-- Repeated elements are consistent without making the page monotonous.
-- Text and meaningful non-text elements meet contrast requirements in light and dark modes.
-- Meaning is never communicated by color alone.
-- The core workflow is usable by keyboard with visible focus and correct semantics.
-- The interface reflows at 320 CSS pixels, survives zoom and text spacing, and works across relevant breakpoints and interaction states.
-- The result still belongs to the existing product.
-
-Summarize the scope, the highest-impact changes, and the verification performed. Explicitly disclose every visible content change, or state that visible content was preserved. Mention unresolved subjective tradeoffs briefly instead of presenting them as defects.
+Confirm that content and behavior are preserved; hierarchy is clear; every remaining border, surface, shadow, and radius has a purpose; selected states persist; focus is visible; semantics are correct; color is not the only cue; contrast passes in supported themes; and the scoped interface reflows without lost content or functionality.
