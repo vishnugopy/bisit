@@ -45,11 +45,16 @@ The workflow contains no Codex-specific tool dependency, so the same `SKILL.md` 
 - Excessive borders, shadows, nested cards, gradients, and other AI-slop patterns, while preserving borders that communicate state or structure
 - Decorative left borders and accents that do not communicate meaning
 - Preservation of existing visible copy, labels, links, metrics, values, and data
+- Swipe and standard keyboard controls for carousels, tabs, drawers, and similar components that already navigate or dismiss, with swipe never the only way
+- Reuse of the project's own components first, then native HTML, then a package only as a last resort
 - Consistent corner radii across related components
 - WCAG 2.2 AA color contrast in light and dark modes
 - Keyboard navigation, visible focus and selection states, semantics, and screen-reader support without using ARIA as a substitute for visual cues
-- Responsive reflow, zoom behavior, overflow, and touch-target sizing
+- Mobile-first responsive layout, reflow, zoom behavior, overflow, and touch-target sizing
+- Layout stability: reserved space for media and loading regions, and no shifts between states
 - Hover, active, disabled, error, loading, and reduced-motion states
+
+Bisit keeps token use low: `SKILL.md` is a short core, and it reads the files in `references/` (design, accessibility, responsive, interaction) only when the task needs them.
 
 Bisit preserves user-facing content and intentional brand choices by default. It removes a visual effect only when the effect adds noise rather than meaning.
 

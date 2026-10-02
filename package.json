@@ -1,6 +1,6 @@
 {
   "name": "bisit-skill",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A portable frontend design and accessibility skill for compatible coding agents.",
   "keywords": [
     "agent-skill",
@@ -24,6 +24,7 @@
   "files": [
     "README.md",
     "SKILL.md",
+    "references",
     "agents/openai.yaml"
   ],
   "publishConfig": {
