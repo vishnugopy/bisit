@@ -1,0 +1,68 @@
+{
+  "intent": "Selection must be a real, persistent, non-color cue and keyboard operable; decoration removed. Over-correction risk: deleting the 'Most popular' badge or all card boundaries.",
+  "must_match": [
+    {
+      "id": "selection-semantics",
+      "patterns": [
+        "type=[\"']?radio",
+        "role=[\"']?radio",
+        "aria-checked",
+        "aria-pressed",
+        "aria-current"
+      ],
+      "note": "selected plan exposed as state, not just a class"
+    },
+    {
+      "id": "focus-visible",
+      "pattern": ":focus-visible",
+      "note": "cta button had outline:none"
+    }
+  ],
+  "must_not_match": [
+    {
+      "id": "accent-rail",
+      "pattern": "border-left:\\s*\\d+px",
+      "note": "decorative left accent rail"
+    },
+    {
+      "id": "blur-blob",
+      "pattern": "filter:\\s*blur",
+      "note": "blurred blob"
+    },
+    {
+      "id": "gradient-text",
+      "pattern": "background-clip:\\s*text",
+      "note": "gradient headline text"
+    },
+    {
+      "id": "dot-grid",
+      "pattern": "radial-gradient",
+      "note": "dot-grid background"
+    },
+    {
+      "id": "glow",
+      "pattern": "box-shadow:\\s*0 0 \\d+px",
+      "note": "glow shadows"
+    },
+    {
+      "id": "transition-all",
+      "pattern": "transition:\\s*all",
+      "note": "transition: all"
+    },
+    {
+      "id": "infinite-animation",
+      "pattern": "animation:[^;}]*infinite",
+      "unless": "prefers-reduced-motion",
+      "note": "looping animation must be removed or gated by reduced motion"
+    }
+  ],
+  "structural": [
+    "no_clickable_non_interactive"
+  ],
+  "manual": [
+    "Selected plan identifiable without color and after focus moves away",
+    "'Most popular' badge still present and still visually distinct",
+    "Cards still read as separate selectable options (some boundary retained)",
+    "Hover-only 'What's included?' text reachable by keyboard or always visible"
+  ]
+}

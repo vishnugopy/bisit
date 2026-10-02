@@ -1,0 +1,23 @@
+{
+  "intent": "Layout stability: images need reserved space, chip selection must not resize neighbors, the late promo banner must not push content down.",
+  "must_match": [],
+  "must_not_match": [
+    {
+      "id": "chip-border-jump",
+      "pattern": "\\.chip\\.on\\s*\\{[^}]*border:\\s*3px",
+      "note": "selected chip changes border width"
+    }
+  ],
+  "structural": [
+    "imgs_sized"
+  ],
+  "shift": {
+    "click": ".chip:nth-child(2)",
+    "width": 390
+  },
+  "manual": [
+    "Promo banner still appears (text kept) but its space is reserved, or it no longer displaces content",
+    "Selected chip still clearly identifiable without color",
+    "No new JS behavior beyond what existed"
+  ]
+}

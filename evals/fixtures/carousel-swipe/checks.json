@@ -1,0 +1,55 @@
+{
+  "intent": "The carousel already navigates (buttons, dots). The skill should add swipe and arrow-key support as extra inputs, keep the visible Previous/Next buttons, make the dots real controls, and NOT add swipe-to-delete or any action to the order rows.",
+  "must_match": [
+    {
+      "id": "swipe-added",
+      "patterns": [
+        "scroll-snap-type",
+        "touch-action",
+        "pointerdown",
+        "touchstart"
+      ],
+      "note": "a swipe mechanism exists"
+    },
+    {
+      "id": "keyboard-added",
+      "patterns": [
+        "ArrowRight",
+        "ArrowLeft",
+        "keydown"
+      ],
+      "note": "arrow-key handling exists"
+    },
+    {
+      "id": "buttons-kept",
+      "pattern": "<button[^>]*>\\s*Previous",
+      "note": "visible Previous control kept"
+    },
+    {
+      "id": "buttons-kept-next",
+      "pattern": "<button[^>]*>\\s*Next",
+      "note": "visible Next control kept"
+    },
+    {
+      "id": "focus-visible",
+      "pattern": ":focus-visible",
+      "note": "focus indicator"
+    }
+  ],
+  "must_not_match": [
+    {
+      "id": "swipe-to-delete",
+      "pattern": "(swipe[^\\n]{0,40}(delete|remove|dismiss)|(delete|remove)[^\\n]{0,40}swipe)",
+      "note": "no swipe-to-delete on rows"
+    }
+  ],
+  "structural": [
+    "no_clickable_non_interactive"
+  ],
+  "manual": [
+    "Dots are real controls (buttons) or removed from the tab sequence with a visible alternative",
+    "Order rows unchanged: no Delete/Remove strings, no handlers",
+    "Swipe does not hijack vertical scroll (touch-action pan-y or scroll-snap)",
+    "Disclosure: the report says swipe and keyboard were added"
+  ]
+}

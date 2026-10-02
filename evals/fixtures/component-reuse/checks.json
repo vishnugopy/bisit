@@ -1,0 +1,23 @@
+{
+  "intent": "The project already ships ui/button.css and ui/dialog.{css,js}. Fixes must reuse them: ui-btn classes, <dialog class=ui-dialog> with ui.openDialog, no new component files, no CDN package, shared files untouched.",
+  "must_match": [
+    {"id": "uses-ui-btn", "pattern": "ui-btn--danger", "note": "Cancel plan / Confirm cancellation use the shared danger variant"},
+    {"id": "uses-ui-btn-primary", "pattern": "ui-btn--primary", "note": "Update card uses the shared primary variant"},
+    {"id": "native-dialog", "pattern": "<dialog[^>]*class=[\"'][^\"']*ui-dialog", "note": "modal rebuilt on the shared dialog markup"},
+    {"id": "shared-dialog-api", "patterns": ["ui\\.openDialog", "showModal"], "note": "opened through the shared helper or native showModal"},
+    {"id": "dialog-labelled", "pattern": "<dialog[^>]*aria-labelledby", "note": "dialog has an accessible name"}
+  ],
+  "must_not_match": [
+    {"id": "inline-button-styles", "pattern": "<div[^>]*style=[\"'][^\"']*background", "note": "hand-styled div buttons remain"},
+    {"id": "cdn-script", "pattern": "<script[^>]*src=[\"']https?://", "note": "external package added"},
+    {"id": "cdn-style", "pattern": "<link[^>]*href=[\"']https?://", "note": "external stylesheet added"},
+    {"id": "div-modal", "pattern": "<div[^>]*id=[\"']modal[\"']", "note": "hand-rolled modal overlay remains"}
+  ],
+  "structural": ["no_clickable_non_interactive"],
+  "unchanged": ["ui/tokens.css", "ui/button.css", "ui/dialog.css", "ui/dialog.js"],
+  "manual": [
+    "No new component or utility files were created",
+    "The 'Download invoices' button is left as it was",
+    "Cancel flow still works: opens, Keep plan and Confirm cancellation both close it"
+  ]
+}

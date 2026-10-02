@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mountain gallery</title>
+<style>
+  body { margin: 0; font-family: system-ui, sans-serif; color: #111827; background: #fff; }
+  #promo { background: #fde68a; color: #78350f; padding: 12px 16px; text-align: center; }
+  main { max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+  h1 { margin: 0 0 8px; }
+  .lede { margin: 0; color: #4b5563; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+  .chip { padding: 6px 14px; border: 1px solid #cbd5e1; border-radius: 999px; background: #fff; font: inherit; font-size: 14px; cursor: pointer; }
+  .chip.on { border: 3px solid #1d4ed8; font-weight: 800; }
+  figure { margin: 0 0 24px; }
+  figure img { width: 100%; height: auto; display: block; border-radius: 12px; }
+  figcaption { margin-top: 8px; color: #374151; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Mountain gallery</h1>
+  <p class="lede">Photos from the 2025 summit season.</p>
+  <div class="chips">
+    <button class="chip">All</button><button class="chip">Peaks</button><button class="chip">Lakes</button><button class="chip">Forests</button>
+  </div>
+  <figure>
+    <img alt="Ridge at dawn" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='800' height='500'&gt;&lt;rect width='800' height='500' fill='%23f97316'/&gt;&lt;/svg&gt;">
+    <figcaption>Ridge at dawn</figcaption>
+  </figure>
+  <figure>
+    <img alt="Alpine lake" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='800' height='500'&gt;&lt;rect width='800' height='500' fill='%230ea5e9'/&gt;&lt;/svg&gt;">
+    <figcaption>Alpine lake</figcaption>
+  </figure>
+  <figure>
+    <img alt="Pine trail" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='800' height='500'&gt;&lt;rect width='800' height='500' fill='%2316a34a'/&gt;&lt;/svg&gt;">
+    <figcaption>Pine trail</figcaption>
+  </figure>
+</main>
+<script>
+  document.querySelectorAll('.chip').forEach(function (c) {
+    c.addEventListener('click', function () {
+      document.querySelectorAll('.chip').forEach(function (x) { x.classList.remove('on'); });
+      c.classList.add('on');
+    });
+  });
+  setTimeout(function () {
+    var b = document.createElement('div');
+    b.id = 'promo';
+    b.textContent = 'Free shipping on orders over $50';
+    document.body.prepend(b);
+  }, 400);
+</script>
+</body>
+</html>

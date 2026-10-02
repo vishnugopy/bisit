@@ -1,0 +1,24 @@
+{
+  "intent": "Contrast in both themes, focus visible and not obscured by the sticky header, no color-only meaning, fluid layout, no truncated customer names. Over-correction risk: stripping table or search-input borders.",
+  "must_match": [
+    {"id": "focus-visible", "pattern": ":focus-visible", "note": "*:focus{outline:none} removed all focus rings"},
+    {"id": "focus-not-obscured", "patterns": ["scroll-padding", "scroll-margin"], "note": "WCAG 2.4.11: sticky 72px header must not cover focused items"},
+    {"id": "icon-button-name", "patterns": ["<button[^>]*\\baria-label=", "<button[^>]*>[^<]*<span[^>]*(visually-hidden|sr-only)"], "note": "the gear button has no accessible name"},
+    {"id": "table-kept", "pattern": "<table", "note": "data table must stay a table"}
+  ],
+  "must_not_match": [
+    {"id": "fixed-body-min", "pattern": "min-width:\\s*1200px", "note": "body forces 1200px"},
+    {"id": "fixed-columns", "pattern": "repeat\\(3,\\s*380px\\)", "note": "fixed 380px metric columns"},
+    {"id": "ellipsis-truncation", "pattern": "text-overflow:\\s*ellipsis", "note": "customer names truncated"},
+    {"id": "focus-outline-none", "pattern": "\\*:focus\\s*\\{\\s*outline:\\s*none", "note": "global outline removal"},
+    {"id": "light-muted", "pattern": "--bg:\\s*#f9fafb[^}]*--muted:\\s*#9ca3af", "note": "2.5:1 muted text in light theme"},
+    {"id": "dark-muted", "pattern": "--bg:\\s*#0b1220[^}]*--muted:\\s*#6b7280", "note": "3.7:1 muted text in dark theme"}
+  ],
+  "structural": [],
+  "manual": [
+    "Up/down deltas distinguishable without color (icon, sign, or hidden text)",
+    "Selected '30 days' chip identifiable without color",
+    "Full customer names visible (wrap or stack) at 320 and 1280",
+    "Search input and table still have visible boundaries"
+  ]
+}

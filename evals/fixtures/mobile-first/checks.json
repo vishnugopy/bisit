@@ -1,0 +1,74 @@
+{
+  "intent": "Mobile-first rules: device-width viewport with zoom allowed, min-width queries, dvh, safe-area inset, 16px fields, bigger touch targets, 320px reflow.",
+  "must_match": [
+    {
+      "id": "viewport-device-width",
+      "pattern": "name=[\"']viewport[\"'][^>]*width=device-width",
+      "note": "viewport was width=1024"
+    },
+    {
+      "id": "min-width-queries",
+      "pattern": "@media[^{]*\\(min-width",
+      "note": "layout built up from the narrow base with min-width queries"
+    },
+    {
+      "id": "dvh",
+      "note": "100vh hero uses dvh or svh (a vh fallback before it is fine)",
+      "patterns": [
+        "\\d+dvh",
+        "\\d+svh"
+      ]
+    },
+    {
+      "id": "safe-area",
+      "pattern": "safe-area-inset",
+      "note": "fixed bottom bar offset for the home indicator"
+    },
+    {
+      "id": "focus-visible",
+      "pattern": ":focus-visible",
+      "note": "visible focus for links, input, button"
+    }
+  ],
+  "must_not_match": [
+    {
+      "id": "no-zoom",
+      "pattern": "user-scalable\\s*=\\s*no",
+      "note": "pinch zoom disabled"
+    },
+    {
+      "id": "max-scale-1",
+      "pattern": "maximum-scale\\s*=\\s*[1-4](\\.\\d+)?(?!\\d)",
+      "note": "maximum-scale below 5"
+    },
+    {
+      "id": "fixed-viewport",
+      "pattern": "content=\"[^\"]*width=1024",
+      "note": "viewport pinned to 1024"
+    },
+    {
+      "id": "100vh",
+      "pattern": "height:\\s*100vh",
+      "note": "bare 100vh with no dvh/svh alternative",
+      "unless": "\\d+[ds]vh"
+    },
+    {
+      "id": "small-field",
+      "pattern": "\\.buy input[^}]*font-size:\\s*(1[0-5]|[0-9])px",
+      "note": "field under 16px zooms on iOS focus"
+    },
+    {
+      "id": "tiny-link-padding",
+      "pattern": "padding:\\s*4px 8px",
+      "note": "bar links under 24px tall"
+    }
+  ],
+  "structural": [
+    "inputs_labelled"
+  ],
+  "manual": [
+    "Layout is written narrow-first (base rules are the single-column layout)",
+    "Add to cart and bar links have comfortable touch targets",
+    "Photo block and specs keep their content; nothing deleted"
+  ]
+}

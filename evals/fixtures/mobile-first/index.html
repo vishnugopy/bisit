@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1024, user-scalable=no, maximum-scale=1">
+<title>Trailhead Pack 40L</title>
+<style>
+  body { margin: 0; font-family: system-ui, sans-serif; color: #1f2937; }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 16px 48px; border-bottom: 1px solid #e5e7eb; }
+  header nav a { margin-left: 24px; color: #1f2937; text-decoration: none; font-size: 14px; }
+  .hero { height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; padding: 0 48px; background: #f8fafc; }
+  .hero h1 { font-size: 56px; margin: 0 0 16px; }
+  .hero p { font-size: 18px; color: #475569; margin: 0; }
+  .photo { height: 360px; border-radius: 16px; background: linear-gradient(135deg, #99f6e4, #0f766e); }
+  .buy { display: flex; align-items: center; gap: 12px; margin-top: 24px; }
+  .buy input { width: 64px; padding: 6px; font-size: 14px; border: 1px solid #94a3b8; border-radius: 6px; }
+  .buy button { padding: 6px 14px; font-size: 14px; background: #0f766e; color: #fff; border: 0; border-radius: 6px; }
+  .specs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 64px 48px 120px; }
+  .spec { padding: 20px; border: 1px solid #e5e7eb; border-radius: 12px; }
+  .spec b { display: block; font-size: 28px; margin-bottom: 4px; }
+  .bar { position: fixed; bottom: 0; left: 0; right: 0; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: #0f172a; color: #fff; font-size: 14px; }
+  .bar a { color: #fff; padding: 4px 8px; margin-left: 8px; }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; height: auto; padding: 48px 24px; }
+    .specs { grid-template-columns: repeat(2, 1fr); padding: 32px 24px 120px; }
+    header { padding: 16px 24px; }
+    .bar { padding: 0 24px; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 36px; }
+    .specs { grid-template-columns: 1fr; }
+    header nav a { margin-left: 12px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <strong>Trailhead</strong>
+  <nav><a href="/packs">Packs</a><a href="/tents">Tents</a><a href="/guides">Guides</a><a href="/cart">Cart (0)</a></nav>
+</header>
+<section class="hero">
+  <div>
+    <h1>Trailhead Pack 40L</h1>
+    <p>Carry three days of gear without the strain. It weighs 1.2 kg and packs down to the size of a loaf of bread.</p>
+    <div class="buy"><span>Qty</span><input type="number" value="1" min="1"><button>Add to cart</button></div>
+  </div>
+  <div class="photo"></div>
+</section>
+<section class="specs">
+  <div class="spec"><b>40 L</b>Capacity</div>
+  <div class="spec"><b>1.2 kg</b>Weight</div>
+  <div class="spec"><b>3 yr</b>Warranty</div>
+  <div class="spec"><b>30 days</b>Free returns</div>
+</section>
+<div class="bar"><span>Free shipping over $75</span><span><a href="/size">Size guide</a><a href="/contact">Contact</a></span></div>
+</body>
+</html>

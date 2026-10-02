@@ -1,0 +1,12 @@
+/* Shared button. Variants: --primary, --ghost, --danger. */
+.ui-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 2.75rem; padding: 0 var(--space-4);
+  font: inherit; font-weight: 600; cursor: pointer;
+  border: 2px solid transparent; border-radius: var(--radius-md);
+  background: var(--color-surface); color: var(--color-text);
+}
+.ui-btn:focus-visible { outline: 3px solid var(--color-brand); outline-offset: 2px; }
+.ui-btn--primary { background: var(--color-brand); color: #fff; }
+.ui-btn--ghost { border-color: var(--color-line); }
+.ui-btn--danger { background: var(--color-danger); color: #fff; }

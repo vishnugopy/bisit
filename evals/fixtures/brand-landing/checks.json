@@ -1,0 +1,90 @@
+{
+  "intent": "Keep the brand gradient (token used by logo, CTA and dividers); remove one-off decoration; fix hero reflow, contrast, heading order, alt. Over-correction risk: flattening the brand gradient or deleting the hero image.",
+  "must_match": [
+    {
+      "id": "img-alt",
+      "pattern": "<img[^>]*\\balt=",
+      "note": "hero image alt text"
+    },
+    {
+      "id": "h2-not-h4",
+      "pattern": "<h2",
+      "note": "section headings no longer skip from h1 to h4"
+    },
+    {
+      "id": "hero-img-kept",
+      "pattern": "<img[^>]*beans\\.jpg",
+      "note": "hero image must remain"
+    },
+    {
+      "id": "focus-visible",
+      "pattern": ":focus-visible",
+      "note": "visible focus for links and CTA"
+    },
+    {
+      "id": "logo-brand-kept",
+      "pattern": "\\.logo[^}]*var\\(--brand-gradient\\)",
+      "note": "logo wordmark still uses the brand gradient token"
+    },
+    {
+      "id": "brand-orange-kept",
+      "pattern": "#ff7a18",
+      "note": "original brand orange still present (logotypes are exempt from contrast, so the logo needs no recolor)"
+    },
+    {
+      "id": "dividers-kept",
+      "pattern": "class=[\"']divider[\"']",
+      "note": "gradient dividers use the brand token on 3 elements; this fixture treats them as brand, not decoration"
+    }
+  ],
+  "must_not_match": [
+    {
+      "id": "blur-blob",
+      "pattern": "filter:\\s*blur",
+      "note": "decorative blurred blob"
+    },
+    {
+      "id": "glass",
+      "pattern": "backdrop-filter",
+      "note": "glass effect"
+    },
+    {
+      "id": "dot-grid",
+      "pattern": "radial-gradient",
+      "note": "dot grid"
+    },
+    {
+      "id": "glow",
+      "pattern": "box-shadow:\\s*0 0 \\d+px",
+      "note": "glow on the quote"
+    },
+    {
+      "id": "accent-rail",
+      "pattern": "border-left:\\s*\\d+px",
+      "note": "quote accent rail"
+    },
+    {
+      "id": "fixed-wrap",
+      "pattern": "(?<![-\\w])width:\\s*1100px",
+      "note": "fixed 1100px wrapper"
+    },
+    {
+      "id": "fixed-grid",
+      "pattern": "repeat\\(3,\\s*340px\\)",
+      "note": "fixed grid columns"
+    },
+    {
+      "id": "nowrap-nav",
+      "pattern": "(^|[};\\s])nav\\s*\\{[^}]*white-space:\\s*nowrap",
+      "note": "nav container cannot wrap (per-link nowrap is fine)"
+    }
+  ],
+  "structural": [],
+  "manual": [
+    "Brand gradient still on the logo wordmark and the primary CTA",
+    "Hero headline and CTA do not overlap at 320; hero text keeps AA contrast on its background",
+    "Tag pills ('New', 'Fresh', ...) kept as content, even if restyled",
+    "Three 'Read more' links remain distinguishable for screen readers",
+    "Brand fix scope: a contrast fix darkens only the failing element (e.g. CTA via a derived token), not the shared brand token"
+  ]
+}

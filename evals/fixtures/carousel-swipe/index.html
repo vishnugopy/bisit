@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reviews</title>
+<style>
+  body { margin: 0; font-family: system-ui, sans-serif; color: #1f2937; background: #f9fafb; }
+  main { max-width: 560px; margin: 0 auto; padding: 24px 16px; }
+  h1 { margin: 0 0 16px; }
+  h2 { font-size: 1.125rem; margin: 32px 0 8px; }
+  .viewport { overflow: hidden; border-radius: 12px; background: #fff; border: 1px solid #d1d5db; }
+  .track { display: flex; transition: transform .35s ease; }
+  .slide { flex: 0 0 100%; box-sizing: border-box; padding: 24px; }
+  .slide p { margin: 0 0 12px; font-size: 1.125rem; }
+  .slide small { color: #4b5563; }
+  .controls { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+  .controls button { min-height: 44px; padding: 0 16px; font: inherit; border: 1px solid #9ca3af; border-radius: 8px; background: #fff; }
+  .dots { display: flex; gap: 10px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: #d1d5db; cursor: pointer; }
+  .dot.on { background: #0f766e; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #e5e7eb; }
+</style>
+</head>
+<body>
+<main>
+  <h1>What customers say</h1>
+  <div class="viewport">
+    <div class="track" id="track">
+      <div class="slide"><p>"Lighter than my old pack and twice as comfortable."</p><small>Dana, Denver</small></div>
+      <div class="slide"><p>"Survived a week of rain without a single wet sock."</p><small>Imran, Leeds</small></div>
+      <div class="slide"><p>"The hip belt finally fits me properly."</p><small>Sofia, Lisbon</small></div>
+    </div>
+  </div>
+  <div class="controls">
+    <button id="prev" type="button">Previous</button>
+    <div class="dots"><span class="dot on" onclick="go(0)"></span><span class="dot" onclick="go(1)"></span><span class="dot" onclick="go(2)"></span></div>
+    <button id="next" type="button">Next</button>
+  </div>
+  <h2>Recent orders</h2>
+  <ul>
+    <li><span>Order #1042</span><span>Shipped</span></li>
+    <li><span>Order #1041</span><span>Delivered</span></li>
+    <li><span>Order #1040</span><span>Delivered</span></li>
+  </ul>
+</main>
+<script>
+  var i = 0, n = 3;
+  function go(k) {
+    i = (k + n) % n;
+    document.getElementById('track').style.transform = 'translateX(' + (-100 * i) + '%)';
+    document.querySelectorAll('.dot').forEach(function (d, j) { d.classList.toggle('on', j === i); });
+  }
+  document.getElementById('prev').onclick = function () { go(i - 1); };
+  document.getElementById('next').onclick = function () { go(i + 1); };
+</script>
+</body>
+</html>

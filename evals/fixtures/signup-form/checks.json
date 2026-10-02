@@ -1,0 +1,63 @@
+{
+  "intent": "Visible labels, focus indicator, native button, associated error, contrast. Over-correction risk: inventing label copy.",
+  "must_match": [
+    {
+      "id": "focus-visible",
+      "pattern": ":focus-visible",
+      "note": "input outline:none removed the focus ring"
+    },
+    {
+      "id": "error-association",
+      "patterns": [
+        "aria-describedby"
+      ],
+      "note": "error text tied to the email input"
+    },
+    {
+      "id": "aria-invalid",
+      "pattern": "aria-invalid",
+      "note": "invalid state exposed to AT"
+    },
+    {
+      "id": "autocomplete",
+      "pattern": "autocomplete=",
+      "note": "WCAG 1.3.5 input purpose"
+    },
+    {
+      "id": "html-lang",
+      "pattern": "<html[^>]*\\blang=",
+      "note": "document language"
+    },
+    {
+      "id": "h1",
+      "pattern": "<h1",
+      "note": "title div promoted to a heading"
+    },
+    {
+      "id": "native-button",
+      "pattern": "<button[^>]*>\\s*Create account",
+      "note": "div.btn replaced with a button"
+    }
+  ],
+  "must_not_match": [
+    {
+      "id": "fixed-480",
+      "pattern": "(?<![-\\w])width:\\s*480px",
+      "note": "fixed-width wrapper"
+    },
+    {
+      "id": "light-placeholder",
+      "pattern": "::placeholder\\s*\\{[^}]*#bbb",
+      "note": "placeholder contrast fail"
+    },
+    {
+      "id": "light-link",
+      "pattern": "8ab4f8",
+      "note": "link contrast fail"
+    }
+  ],
+  "structural": [
+    "inputs_labelled",
+    "no_clickable_non_interactive"
+  ]
+}

@@ -1,0 +1,14 @@
+:root {
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --color-text: #1f2937;
+  --color-muted: #4b5563;
+  --color-surface: #ffffff;
+  --color-line: #d1d5db;
+  --color-brand: #0f766e;
+  --color-danger: #b91c1c;
+  --radius-md: 8px;
+}

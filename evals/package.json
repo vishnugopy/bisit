@@ -1,0 +1,8 @@
+{
+  "name": "bisit-evals",
+  "private": true,
+  "description": "Fixtures and checks for evaluating the Bisit skill. Not published.",
+  "devDependencies": {
+    "axe-core": "^4.10.0"
+  }
+}
