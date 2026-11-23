@@ -27,6 +27,8 @@ python3 check.py signup-form /path/to/edited/index.html
 | `component-reuse` | a project that already ships `ui/` button and dialog; fixes should reuse them |
 | `carousel-swipe` | a carousel with no swipe or arrow keys, plus a static list where nothing should be added |
 | `chip-overflow` | recipient chips wrapping into a scroll box, a `+N` bubble over the avatars, a quota shown only as text, a grayed-out drop zone at the limit |
+| `truthful-status` | a 'Paid' badge and 'All settled' before anything is recorded, contradicting messages, an amount prefilled to the total, a vague 'Continue'. Report-only: the unedited page passes the pattern checks on purpose; the score is the manual review of the report |
+| `control-choice` | dropdowns for 3 and 2 options, two stacked blocks for mutually exclusive payment modes, a search box over 3 items; values and submit handler must survive |
 
 ## Running an arm
 

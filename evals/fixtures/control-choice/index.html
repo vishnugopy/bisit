@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a lesson</title>
+<style>
+  :root { --bg:#f8fafc; --panel:#fff; --fg:#1e293b; --muted:#475569; --primary:#6d28d9; }
+  body { margin:0; font:16px/1.5 system-ui, sans-serif; color:var(--fg); background:var(--bg); }
+  main { max-width:560px; margin:0 auto; padding:16px; }
+  .card { background:var(--panel); border-radius:8px; padding:16px; margin-bottom:16px; }
+  label { display:block; margin-top:12px; font-weight:600; }
+  select, input { font:inherit; padding:8px; width:100%; box-sizing:border-box; border:1px solid #94a3b8; border-radius:6px; }
+  ul { padding-left:20px; }
+  button { margin-top:16px; font:inherit; padding:10px 16px; border:0; border-radius:6px; background:var(--primary); color:#fff; }
+  :focus-visible { outline:3px solid var(--primary); outline-offset:2px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Book a lesson</h1>
+  <form onsubmit="event.preventDefault(); document.getElementById('out').textContent = new URLSearchParams(new FormData(this)).toString();">
+    <div class="card">
+      <label for="vehicle">Vehicle</label>
+      <select id="vehicle" name="vehicle">
+        <option value="manual">Manual car</option>
+        <option value="auto">Automatic car</option>
+        <option value="moto">Motorcycle</option>
+      </select>
+
+      <label for="pickup">Pick me up at home</label>
+      <select id="pickup" name="pickup">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <h2>Pay online</h2>
+      <p>Pay now by card.</p>
+      <label><input type="checkbox" name="pay_online" value="1"> Pay online</label>
+    </div>
+    <div class="card">
+      <h2>Pay at the school</h2>
+      <p>Pay at the front desk before the lesson.</p>
+      <label><input type="checkbox" name="pay_desk" value="1"> Pay at the school</label>
+    </div>
+
+    <div class="card">
+      <label for="find">Instructor</label>
+      <input id="find" type="search" placeholder="Search instructors">
+      <ul>
+        <li><label><input type="radio" name="instructor" value="sam"> Sam</label></li>
+        <li><label><input type="radio" name="instructor" value="lea"> Léa</label></li>
+        <li><label><input type="radio" name="instructor" value="omar"> Omar</label></li>
+      </ul>
+    </div>
+
+    <button type="submit">Book the lesson</button>
+    <output id="out" aria-live="polite"></output>
+  </form>
+</main>
+</body>
+</html>

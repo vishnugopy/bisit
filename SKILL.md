@@ -25,9 +25,11 @@ Do not scan the project when a narrower target exists.
    - `accessibility.md`: semantics, focus, contrast, color cues, motion.
    - `responsive.md`: mobile-first layout, reflow, touch sizing, layout shift.
    - `interaction.md`: swipe and keyboard patterns. Read it only when the target has a carousel, tabs, stepper, drawer, sheet, dialog, or menu.
+   - `states.md`: loading, empty, error, and sending states. Read it when the target fetches data, lists data that can be empty, or submits.
+   - `ux.md`: truthful copy and statuses, the right control for the number of options, consistency across screens. Read it for a whole-screen or project review, or when copy, statuses, or control choice is in question.
    - `collections.md`: lists that grow with input (chips, tags, avatars, recipients, attachments) and limits the user can reach (quotas, size budgets). Read it only when the target has one.
 
-   For a whole-screen or project review, read design, accessibility, and responsive. For a narrower request, read only what it names.
+   For a whole-screen or project review, read design, accessibility, responsive, states, and ux. For a narrower request, read only what it names.
 3. If the user asks for an audit, report findings without editing. Otherwise fix the problems in scope, starting with layout, hierarchy, states, and accessibility before cosmetic polish.
 4. Verify only what you changed. With a browser, render narrow, intermediate, and wide widths in each supported theme and run the project's accessibility tooling or axe-core; otherwise say the result is a static review. Never claim visual verification without viewing the result.
 5. Report scope, highest-impact changes, verification, visible-content changes, and unresolved tradeoffs. Scale the report to the scope: a few lines for a selection, a structured list for a project.
@@ -52,4 +54,4 @@ Never duplicate an existing component or add a package for something native HTML
 
 ## Finish
 
-Compare the final visible text with the copy recorded at the start and report every difference. Confirm that content and behavior are preserved and that the closing check of each reference you read holds for the scoped interface.
+Compare the final visible text with the copy recorded at the start and report every difference. When you fixed a defect in a shared component or pattern, look for the same defect where else it is used and report what you find outside the scope. Confirm that content and behavior are preserved and that the closing check of each reference you read holds for the scoped interface.

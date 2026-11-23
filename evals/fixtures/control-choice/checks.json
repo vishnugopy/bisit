@@ -1,0 +1,48 @@
+{
+  "intent": "A 3-option select and a 2-option select should become visible radio choices with the same names and values; two stacked blocks with independent checkboxes for mutually exclusive payment modes should become one two-option choice (report if the submitted field names must change); a search box over 3 instructors is noise. The submit handler and option values must stay the same.",
+  "must_match": [
+    {
+      "id": "vehicle-radios",
+      "pattern": "type=\"radio\"[^>]*name=\"vehicle\"|name=\"vehicle\"[^>]*type=\"radio\"",
+      "note": "vehicle options visible as radios"
+    },
+    {
+      "id": "pickup-radios",
+      "pattern": "type=\"radio\"[^>]*name=\"pickup\"|name=\"pickup\"[^>]*type=\"radio\"",
+      "note": "pickup yes/no visible as radios or a segmented control"
+    },
+    {
+      "id": "values-kept",
+      "patterns": [
+        "value=\"manual\"",
+        "value=\"auto\"",
+        "value=\"moto\""
+      ],
+      "note": "option values unchanged"
+    },
+    {
+      "id": "handler-kept",
+      "pattern": "new FormData\\(this\\)",
+      "note": "submit handler unchanged"
+    }
+  ],
+  "must_not_match": [
+    {
+      "id": "vehicle-select",
+      "pattern": "<select[^>]*name=\"vehicle\"",
+      "note": "no dropdown for three options"
+    },
+    {
+      "id": "pickup-select",
+      "pattern": "<select[^>]*name=\"pickup\"",
+      "note": "no dropdown for two options"
+    }
+  ],
+  "structural": [],
+  "manual": [
+    "Radio groups have a visible group label (fieldset/legend or role=radiogroup with a name) and arrow-key navigation",
+    "The two payment blocks are reported as mutually exclusive modes for one segmented or radio choice; if merged, the change of submitted field names is disclosed",
+    "The search box over three instructors is removed or reported as unnecessary",
+    "Submitting still produces vehicle, pickup and instructor values the backend expects"
+  ]
+}

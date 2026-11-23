@@ -1,0 +1,19 @@
+{
+  "intent": "Nothing is saved yet: the 'Paid' badge, 'All settled' and 'Payment received' are false, they contradict 'Remaining balance: $79.00', the amount is prefilled to the total so one click would record money not counted, and 'Continue' does not name the action. Every one of these changes copy or behavior, so the skill should REPORT them (with the gating condition or proposed wording) and leave the visible text unchanged unless it discloses each change.",
+  "must_match": [
+    {
+      "id": "copy-kept",
+      "pattern": "Remaining balance: \\$79\\.00",
+      "note": "true line kept"
+    }
+  ],
+  "must_not_match": [],
+  "structural": [],
+  "manual": [
+    "Report flags the 'Paid' badge as shown before payment is recorded, and names the condition that should gate it",
+    "Report flags 'All settled, nothing left to pay.' and 'Payment received. Thank you!' as false and contradicting 'Remaining balance: $79.00', and names the one to keep",
+    "Report flags the amount prefilled to the total due and proposes an empty field plus a shortcut such as 'Received the full amount'",
+    "Report proposes a main button label that names the action and value, e.g. 'Record $79.00'",
+    "Visible copy unchanged, or every change disclosed in the report"
+  ]
+}

@@ -54,8 +54,13 @@ The workflow contains no Codex-specific tool dependency, so the same `SKILL.md` 
 - Layout stability: reserved space for media and loading regions, and no shifts between states
 - Growing collections and limits: chips capped with a "+N more" control that opens the full list (items stay removable), avatar stacks with the "+N" bubble behind, quotas shown as a colored meter with visible text, the input removed when the limit is full, and rejections shown inline and as one toast
 - Hover, active, disabled, error, loading, and reduced-motion states
+- Loading, empty, error, and sending states: two kinds of loader only, empty states that name what is missing and offer the fix, errors under their field, failures that keep the user's input, and no double submit
+- Truthful screens: no status shown before it is true, distinct words for close states, labels that match the window's action, each fact said once, and no prefilled value a click would commit (reported, since it changes copy)
+- The right control for the number of options: visible tiles for 2 to 4, search for many, a segmented control for two modes, no nested menus
+- Color reserved for the main action, statuses on badges or dots, sibling controls sharing one size, proportional charts, and dark mode built as a ladder of surfaces
+- After a fix in a shared component, the same defect looked for on the other screens that use it
 
-Bisit keeps token use low: `SKILL.md` is a short core, and it reads the files in `references/` (design, accessibility, responsive, interaction, collections) only when the task needs them.
+Bisit keeps token use low: `SKILL.md` is a short core, and it reads the files in `references/` (design, accessibility, responsive, interaction, collections, states, ux) only when the task needs them.
 
 Bisit preserves user-facing content and intentional brand choices by default. It removes a visual effect only when the effect adds noise rather than meaning.
 
