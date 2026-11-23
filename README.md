@@ -52,9 +52,10 @@ The workflow contains no Codex-specific tool dependency, so the same `SKILL.md` 
 - Keyboard navigation, visible focus and selection states, semantics, and screen-reader support without using ARIA as a substitute for visual cues
 - Mobile-first responsive layout, reflow, zoom behavior, overflow, and touch-target sizing
 - Layout stability: reserved space for media and loading regions, and no shifts between states
+- Growing collections and limits: chips capped with a "+N more" control that opens the full list (items stay removable), avatar stacks with the "+N" bubble behind, quotas shown as a colored meter with visible text, the input removed when the limit is full, and rejections shown inline and as one toast
 - Hover, active, disabled, error, loading, and reduced-motion states
 
-Bisit keeps token use low: `SKILL.md` is a short core, and it reads the files in `references/` (design, accessibility, responsive, interaction) only when the task needs them.
+Bisit keeps token use low: `SKILL.md` is a short core, and it reads the files in `references/` (design, accessibility, responsive, interaction, collections) only when the task needs them.
 
 Bisit preserves user-facing content and intentional brand choices by default. It removes a visual effect only when the effect adds noise rather than meaning.
 

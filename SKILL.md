@@ -25,6 +25,7 @@ Do not scan the project when a narrower target exists.
    - `accessibility.md`: semantics, focus, contrast, color cues, motion.
    - `responsive.md`: mobile-first layout, reflow, touch sizing, layout shift.
    - `interaction.md`: swipe and keyboard patterns. Read it only when the target has a carousel, tabs, stepper, drawer, sheet, dialog, or menu.
+   - `collections.md`: lists that grow with input (chips, tags, avatars, recipients, attachments) and limits the user can reach (quotas, size budgets). Read it only when the target has one.
 
    For a whole-screen or project review, read design, accessibility, and responsive. For a narrower request, read only what it names.
 3. If the user asks for an audit, report findings without editing. Otherwise fix the problems in scope, starting with layout, hierarchy, states, and accessibility before cosmetic polish.

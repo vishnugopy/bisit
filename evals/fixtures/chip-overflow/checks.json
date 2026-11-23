@@ -1,0 +1,59 @@
+{
+  "intent": "A recipient header whose chips wrap into a scrolling box, a +N bubble painted over the avatars, and a quota shown only as text with a grayed-out drop zone at the limit. The skill should cap the chips with a '+N more' control that opens the full, still-removable list, put the bubble behind the avatars, show the quota as a meter with visible text, and replace the dead drop zone with a sentence saying how to free room.",
+  "must_match": [
+    {
+      "id": "more-control",
+      "pattern": "<button[^>]*>[^<]*\\+\\s*\\d+",
+      "note": "a '+N more' button names the hidden chips"
+    },
+    {
+      "id": "full-list",
+      "patterns": [
+        "<dialog",
+        "aria-haspopup",
+        "popover"
+      ],
+      "note": "the hidden chips open in a dialog or popover"
+    },
+    {
+      "id": "meter",
+      "patterns": [
+        "role=\"progressbar\"",
+        "<progress",
+        "<meter"
+      ],
+      "note": "the quota is a meter"
+    },
+    {
+      "id": "full-message",
+      "pattern": "(?i)remove[^<]{0,40}(file|room|space)",
+      "note": "at the limit, a sentence says how to free room"
+    },
+    {
+      "id": "reduced-motion",
+      "pattern": "prefers-reduced-motion",
+      "note": "any added animation is turned off under reduced motion"
+    }
+  ],
+  "must_not_match": [
+    {
+      "id": "chips-scroll-box",
+      "pattern": "\\.chips\\s*\\{[^}]*overflow-y:\\s*auto",
+      "note": "chips no longer wrap into a scrolling box"
+    },
+    {
+      "id": "bubble-on-top",
+      "pattern": "\\.more\\s*\\{[^}]*z-index:\\s*[1-9]",
+      "note": "the +N bubble is not painted over the avatars"
+    }
+  ],
+  "structural": [],
+  "manual": [
+    "Every recipient name still exists in the page (inline or in the full list) and each keeps its Remove button with the name in its accessible name",
+    "The '+N more' count matches the number of hidden chips, and focus returns to it when the list closes",
+    "The meter keeps '9.7 MB of 10 MB' as visible text and is not color-only",
+    "The grayed-out drop zone is removed at the limit, not just disabled",
+    "No new product behavior: no bulk 'Remove all' unless disclosed as missing, no upload logic added",
+    "Disclosure: the report lists each new label it wrote ('+N more', the limit sentence)"
+  ]
+}

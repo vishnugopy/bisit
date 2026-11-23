@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New message</title>
+<style>
+  :root { --bg:#f8fafc; --panel:#fff; --fg:#1e293b; --muted:#64748b; --primary:#6d28d9; --primary-soft:#ede9fe;
+           --success:#16a34a; --warning:#d97706; --danger:#dc2626; }
+  body { margin:0; font:14px/1.4 system-ui, sans-serif; color:var(--fg); background:var(--bg); }
+  main { max-width:720px; margin:0 auto; padding:16px; }
+  .head { display:flex; gap:12px; align-items:flex-start; background:var(--panel); padding:12px; border-radius:8px; }
+  .stack { display:flex; flex-shrink:0; }
+  .av { border-radius:50%; margin-left:-10px; border:2px solid var(--panel); }
+  .av:first-child { margin-left:0; }
+  .more { position:relative; z-index:5; margin-left:-10px; width:36px; height:36px; border-radius:50%; background:var(--primary-soft);
+          color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight:600; font-size:12px; }
+  .chips { list-style:none; margin:6px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:6px; max-height:64px; overflow-y:auto; }
+  .chip { background:var(--primary-soft); color:var(--primary); border-radius:999px; padding:2px 4px 2px 10px; white-space:nowrap; }
+  .x { border:0; background:none; color:inherit; cursor:pointer; }
+  .files { margin-top:16px; background:var(--panel); padding:12px; border-radius:8px; }
+  .quota { color:var(--muted); font-size:12px; }
+  .drop { margin-top:8px; padding:24px; border:2px dashed #cbd5e1; border-radius:8px; text-align:center; opacity:.4; }
+</style>
+</head>
+<body>
+<main>
+  <h1>New message</h1>
+  <section class="head" aria-label="Recipients">
+    <div class="stack">
+      <img class="av" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' fill='%23c4b5fd'/%3E%3Ccircle cx='18' cy='14' r='6' fill='%236d28d9'/%3E%3Cpath d='M6 34c2-8 22-8 24 0' fill='%236d28d9'/%3E%3C/svg%3E" alt="" width="36" height="36">
+      <img class="av" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' fill='%23c4b5fd'/%3E%3Ccircle cx='18' cy='14' r='6' fill='%236d28d9'/%3E%3Cpath d='M6 34c2-8 22-8 24 0' fill='%236d28d9'/%3E%3C/svg%3E" alt="" width="36" height="36">
+      <img class="av" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' fill='%23c4b5fd'/%3E%3Ccircle cx='18' cy='14' r='6' fill='%236d28d9'/%3E%3Cpath d='M6 34c2-8 22-8 24 0' fill='%236d28d9'/%3E%3C/svg%3E" alt="" width="36" height="36">
+      <span class="more">+11</span>
+    </div>
+    <div>
+      <strong>14 people selected</strong>
+      <ul class="chips">
+        <li class="chip">Ada Lovelace <button class="x" aria-label="Remove Ada Lovelace" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Alan Turing <button class="x" aria-label="Remove Alan Turing" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Grace Hopper <button class="x" aria-label="Remove Grace Hopper" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Katherine Johnson <button class="x" aria-label="Remove Katherine Johnson" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Margaret Hamilton <button class="x" aria-label="Remove Margaret Hamilton" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Linus Torvalds <button class="x" aria-label="Remove Linus Torvalds" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Barbara Liskov <button class="x" aria-label="Remove Barbara Liskov" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Donald Knuth <button class="x" aria-label="Remove Donald Knuth" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Frances Allen <button class="x" aria-label="Remove Frances Allen" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Edsger Dijkstra <button class="x" aria-label="Remove Edsger Dijkstra" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Radia Perlman <button class="x" aria-label="Remove Radia Perlman" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Tim Berners-Lee <button class="x" aria-label="Remove Tim Berners-Lee" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Hedy Lamarr <button class="x" aria-label="Remove Hedy Lamarr" onclick="this.parentElement.remove()">×</button></li>
+        <li class="chip">Ken Thompson <button class="x" aria-label="Remove Ken Thompson" onclick="this.parentElement.remove()">×</button></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="files">
+    <div><strong>Attachments</strong> <span class="quota">9.7 MB of 10 MB used</span></div>
+    <ul>
+      <li>handbook.pdf (6.1 MB)</li>
+      <li>photos.zip (3.6 MB)</li>
+    </ul>
+    <label class="drop">Drop files here or click to browse
+      <input type="file" multiple disabled hidden>
+    </label>
+  </section>
+</main>
+</body>
+</html>
